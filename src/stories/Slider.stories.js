@@ -1,4 +1,4 @@
-import { Slider } from '../Slider'
+import Slider from '../Slider'
 
 export default {
   title: 'Streamlit/Slider',
@@ -13,6 +13,4 @@ export const Default = Template.bind({})
 
 Default.args = {
 };
-
-
 
