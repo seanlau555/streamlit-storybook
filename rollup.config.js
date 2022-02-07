@@ -30,6 +30,7 @@ export default [
         presets: ['@babel/preset-react']
       }),
       commonjs(),
+      typescript({ tsconfig: './tsconfig.json' }),
       external(),
       resolve(),
       terser(),

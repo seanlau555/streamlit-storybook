@@ -1,29 +1,35 @@
-
-import React  from "react"
+import React, { ReactNode }  from "react"
 import Slider from "@mui/material/Slider"
 import { styled } from "@mui/system"
 
-function createMarks(labels) {
+function createMarks(labels: string[]): any[] {
   return labels.map((label, index) => {
     return { value: index, label }
   })
 }
 
-class DiscreteSlider extends React.Component {
+type Props = {
+  options: string[],
+  width: number,
+  disabled: boolean,
+  onChange: (value: string) => {}
+}
+
+class DiscreteSlider extends React.Component<Props> {
    state = { value: 0 }
 
   constructor(props) {
     super(props)
   }
 
-   onChange = (value) => {
+  onChange = (value: string) => {
     if(this.props.onChange){
       this.props.onChange(value)
     }
   }
 
-   render() {
-    const {options= ["1","2","3"], width= 200 } = this.props
+   render = (): ReactNode => {
+    const {options = ["1","2","3"], width= 200 } = this.props
     const vMargin = 7
     const hMargin = 20
     const StyledSlider = styled(Slider)({
