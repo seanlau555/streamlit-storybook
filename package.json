@@ -21,8 +21,6 @@
     "build-lib": "rollup -c"
   },
   "devDependencies": {
-    "typescript": "^4.5.5",
-    "@types/react": "^17.0.39",
     "@babel/core": "^7.16.12",
     "@babel/preset-react": "^7.12.10",
     "@rollup/plugin-commonjs": "^21.0.1",
@@ -33,6 +31,7 @@
     "@storybook/addon-links": "^6.4.15",
     "@storybook/addon-postcss": "^2.0.0",
     "@storybook/react": "^6.4.15",
+    "@types/react": "^17.0.39",
     "babel-loader": "^8.2.3",
     "postcss": "^8.4.6",
     "rollup": "^2.38.4",
@@ -40,7 +39,8 @@
     "rollup-plugin-peer-deps-external": "^2.2.4",
     "rollup-plugin-postcss": "^4.0.0",
     "rollup-plugin-terser": "^7.0.2",
-    "storybook-css-modules-preset": "^1.1.1"
+    "storybook-css-modules-preset": "^1.1.1",
+    "typescript": "^4.5.5"
   },
   "eslintConfig": {
     "extends": [

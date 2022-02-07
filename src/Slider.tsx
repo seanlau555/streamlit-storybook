@@ -15,12 +15,12 @@ type Props = {
   onChange: (value: string) => {}
 }
 
-class DiscreteSlider extends React.Component<Props> {
+class DiscreteSlider extends React.PureComponent<Props> {
    state = { value: 0 }
 
-  constructor(props) {
-    super(props)
-  }
+   constructor(props: any){
+     super(props)
+   }
 
   onChange = (value: string) => {
     if(this.props.onChange){
