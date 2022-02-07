@@ -1,4 +1,4 @@
-import React, { ReactNode }  from "react"
+import React, {useState}  from "react"
 import Slider from "@mui/material/Slider"
 import { styled } from "@mui/system"
 
@@ -15,49 +15,44 @@ type Props = {
   onChange: (value: string) => void
 }
 
-export class DiscreteSlider extends React.PureComponent<Props> {
-   state = { value: 0 }
+export function DiscreteSlider({
+  onChange,
+  disabled,
+  options=["1","2","3"], 
+  width=200 }: Props) 
+{
+  const [stateValue, setStateValue] = useState(0)
+  const vMargin = 7
+  const hMargin = 20
+  const StyledSlider = styled(Slider)({
+    margin: `${vMargin}px ${hMargin}px`,
+    width: width - hMargin * 2,
+  })
 
-   constructor(props: any){
-     super(props)
-   }
-
-  onChange = (value: string) => {
-    if(this.props.onChange){
-      this.props.onChange(value)
+  const onChangeSlider = (value: string) => {
+    if(onChange){
+      onChange(value)
     }
   }
 
-   render = (): ReactNode => {
-    const {options = ["1","2","3"], width= 200 } = this.props
-    const vMargin = 7
-    const hMargin = 20
-    const StyledSlider = styled(Slider)({
-      margin: `${vMargin}px ${hMargin}px`,
-      width: width - hMargin * 2,
-    })
 
-    return (
-      <StyledSlider
-        aria-label="Restricted values"
-        defaultValue={0}
-        min={0}
-        max={options.length - 1}
-        step={null}
-        size="small"
-        value={this.state.value}
-        valueLabelDisplay="off"
-        marks={createMarks(options)}
-        onChange={(_, value) => {
-          const selectedOption = options[Number(value)]
-          this.setState({ value })
-          this.onChange(selectedOption)
-        }}
-        disabled={this.props.disabled}
-      />
-    )
-  }
+  return (
+    <StyledSlider
+      aria-label="Restricted values"
+      defaultValue={0}
+      min={0}
+      max={options.length - 1}
+      step={null}
+      size="small"
+      value={stateValue}
+      valueLabelDisplay="off"
+      marks={createMarks(options)}
+      onChange={(_, value: any) => {
+        const selectedOption = options[Number(value)]
+        setStateValue(value)
+        onChangeSlider(selectedOption)
+      }}
+      disabled={disabled}
+    />
+  )
 }
-
-
-
