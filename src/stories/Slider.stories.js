@@ -1,13 +1,13 @@
-import Slider from '../Slider'
+import {DiscreteSlider} from '../Slider'
 
 export default {
   title: 'Streamlit/Slider',
-  component: Slider,
+  component: DiscreteSlider,
   argTypes: {
   },
 }
 
-const Template = args => <Slider {...args}/>
+const Template = args => <DiscreteSlider {...args}/>
 
 export const Default = Template.bind({})
 

@@ -12,10 +12,10 @@ type Props = {
   options: string[],
   width: number,
   disabled: boolean,
-  onChange: (value: string) => {}
+  onChange: (value: string) => void
 }
 
-class DiscreteSlider extends React.PureComponent<Props> {
+export class DiscreteSlider extends React.PureComponent<Props> {
    state = { value: 0 }
 
    constructor(props: any){
@@ -59,6 +59,5 @@ class DiscreteSlider extends React.PureComponent<Props> {
   }
 }
 
-export default DiscreteSlider
 
 
