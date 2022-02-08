@@ -1,7 +1,6 @@
 import React, { ReactNode } from "react";
 declare type Props = {
     options: string[];
-    width: number;
     disabled: boolean;
     onChange: (value: string) => void;
 };

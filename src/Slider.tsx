@@ -1,6 +1,5 @@
 import React, { ReactNode }  from "react"
 import Slider from "@mui/material/Slider"
-import { styled } from "@mui/system"
 
 function createMarks(labels: string[]): any[] {
   return labels.map((label, index) => {
@@ -10,7 +9,6 @@ function createMarks(labels: string[]): any[] {
 
 type Props = {
   options: string[],
-  width: number,
   disabled: boolean,
   onChange: (value: string) => void
 }
@@ -29,16 +27,10 @@ export class DiscreteSlider extends React.PureComponent<Props> {
   }
 
    render = (): ReactNode => {
-    const {options = ["1","2","3"], width= 200 } = this.props
-    const vMargin = 7
-    const hMargin = 20
-    const StyledSlider = styled(Slider)({
-      margin: `${vMargin}px ${hMargin}px`,
-      width: width - hMargin * 2,
-    })
+    const {options = ["1","2","3"] } = this.props
 
     return (
-      <StyledSlider
+      <Slider
         aria-label="Restricted values"
         defaultValue={0}
         min={0}
@@ -48,7 +40,7 @@ export class DiscreteSlider extends React.PureComponent<Props> {
         value={this.state.value}
         valueLabelDisplay="off"
         marks={createMarks(options)}
-        onChange={(_, value) => {
+        onChange={(_, value: any) => {
           const selectedOption = options[Number(value)]
           this.setState({ value })
           this.onChange(selectedOption)
