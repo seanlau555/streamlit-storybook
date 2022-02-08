@@ -5,7 +5,18 @@ import { terser } from 'rollup-plugin-terser';
 import postcss from 'rollup-plugin-postcss';
 import commonjs from '@rollup/plugin-commonjs';
 import external from 'rollup-plugin-peer-deps-external';
+import obfuscator from 'rollup-plugin-obfuscator';
 
+const options = {
+  compact: true,
+  controlFlowFlattening: true,
+  controlFlowFlatteningThreshold: 1,
+  numbersToExpressions: true,
+  simplify: true,
+  stringArrayShuffle: true,
+  splitStrings: true,
+  stringArrayThreshold: 1
+}
 
 export default [
   {
@@ -35,9 +46,11 @@ export default [
       }),
       commonjs(),
       typescript({ tsconfig: './tsconfig.json' }),
-      external(),
       resolve(),
-      terser(),
+      obfuscator({
+        globalOptions: options
+      }),
+      terser()
     ]
   }
 ];
