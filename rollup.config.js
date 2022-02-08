@@ -25,6 +25,9 @@ export default [
         }
     ],
     plugins: [
+      external({
+        includeDependencies: true,
+      }),
       postcss({
         plugins: [],
         minimize: true,
